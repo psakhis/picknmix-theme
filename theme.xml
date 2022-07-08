@@ -109,13 +109,13 @@
    <iconColor>ffff00</iconColor>
   </helpsystem> 
          
-  <image name="system_tv" extra="true" ifSubset="FSeffect:FSeffect3">						
+  <video name="system_tv" extra="true" ifSubset="FSeffect:FSeffect3">						
    <size>1 1</size>   
    <origin>0.5 0.5</origin>
    <pos>0.5 0.5</pos>					
    <zIndex>0</zIndex>			
-   <path>./_inc/tv.gif</path>										                         			         
-  </image>
+   <path>./_inc/tv.mp4</path>										                         			         
+  </video>
   
   <video name="system_video" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect2">
       <path>{random}</path>
@@ -389,13 +389,13 @@
   </rating>
        
   <!--Tunner effect-->         
-  <image name="detailed_tv" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect:FSeffect3">						
+  <video name="detailed_tv" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect:FSeffect3">						
    <size>1 1</size>   
    <origin>0.5 0.5</origin>
    <pos>0.5 0.5</pos>					
    <zIndex>0</zIndex>			
-   <path>./_inc/tv.gif</path>										                         			         
-  </image>		
+   <path>./_inc/tv.mp4</path>										                         			         
+  </video>		
   
   <!--Thumbnail box-->             
   <image name="md_thumbnail">	
@@ -705,13 +705,13 @@
   </rating>
        
   <!--Tunner effect-->         
-  <image name="gamecarousel_tv" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect:FSeffect3">						
+  <video name="gamecarousel_tv" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect:FSeffect3">						
    <size>1 1</size>   
    <origin>0.5 0.5</origin>
    <pos>0.5 0.5</pos>					
    <zIndex>0</zIndex>			
-   <path>./_inc/tv.gif</path>										                         			         
-  </image>		
+   <path>./_inc/tv.mp4</path>										                         			         
+  </video>		
   
   <!--Thumbnail box-->             
   <image name="md_thumbnail">	
