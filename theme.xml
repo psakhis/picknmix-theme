@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme defaultView="detailed" defaultTransition="instant">
+ <formatVersion>7</formatVersion>
+ 
+ <!--Theme custom variables-->
+ <variables> 
+  <theme.delayFS ifSubset="delayFS:delayFS2">2</theme.delayFS>
+  <theme.delayFS ifSubset="delayFS:delayFS3">3</theme.delayFS>
+  <theme.delayFS ifSubset="delayFS:delayFS4">4</theme.delayFS>
+  <theme.delayFS ifSubset="delayFS:delayFS5">5</theme.delayFS>
+  <theme.delayFS ifSubset="delayFS:delayFS6">6</theme.delayFS>
+  <theme.delayFS ifSubset="delayFS:delayFS7">7</theme.delayFS>
+  <theme.delayFS ifSubset="delayFS:delayFS8">8</theme.delayFS>  
+  <theme.delayFS ifSubset="delayFS:delayFS0">0</theme.delayFS>  
+ </variables>  
+ 
+ <subset name="FSeffect" displayName="Fullscreen effect">  
+  <include name="FSeffect1" displayName="All"/>
+  <include name="FSeffect2" displayName="Only video"/>
+  <include name="FSeffect3" displayName="Only TV"/>
+  <include name="FSeffect0" displayName="None"/> 
+ </subset>
+ 
+  <subset name="delayFS" displayName="Video fullscreen delay">     
+  <include name="delayFS4" displayName="4"/> 
+  <include name="delayFS2" displayName="2"/> 
+  <include name="delayFS3" displayName="3"/>   
+  <include name="delayFS5" displayName="5"/>  
+  <include name="delayFS6" displayName="6"/>
+  <include name="delayFS7" displayName="7"/>
+  <include name="delayFS8" displayName="8"/>
+  <include name="delayFS0" displayName="No fullscreen"/>
+ </subset> 
+ 
+ <subset name="delayBox" displayName="Thumbnail/Box delay">    
+  <include name="delayBox2" displayName="2"/>
+  <include name="delayBox1" displayName="1"/>  
+  <include name="delayBox3" displayName="3"/>
+  <include name="delayBox4" displayName="4"/>
+  <include name="delayBox5" displayName="5"/>  
+  <include name="delayBox0" displayName="No thumbnail/box"/>
+ </subset> 
+ 
+ <subset name="videoAspect" displayName="Video aspect">  
+  <include name="videoAspect2" displayName="Only stretched on systems"/> 
+  <include name="videoAspect1" displayName="All stretched"/>  
+  <include name="videoAspect0" displayName="No stretched"/>
+ </subset>
+ 
+ <subset name="boxAspect" displayName="Thumbnail/Box aspect">  
+  <include name="boxAspect0" displayName="No stretched"/>  
+  <include name="boxAspect1" displayName="Stretched"/>  
+ </subset>
+ 
+ <subset name="overlayEffect" displayName="Overlay effect">  
+  <include name="overlayEffect0" displayName="No effect"/>  
+  <include name="overlayEffect1" displayName="Scanlines"/>
+  <include name="overlayEffect2" displayName="Pixelate"/>  
+ </subset>
+
+ <view name="screen">
+ 
+  <text name="clock">
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <fontSize>0.05</fontSize>   
+   <color>ff0000</color>
+   <pos>0.04 0.01</pos>
+   <size>0 0</size>
+   <zIndex>1000</zIndex>  
+  </text>  
+   
+  <!-- 
+  <controllerActivity name="controllerActivity">
+   <pos>0.014 0.01</pos>
+  </controllerActivity>
+  -->
+ </view>
+ 
+ <view name="system,basic,detailed,gamecarousel">
+ 
+     <image name="image_overlayEffect" extra="true" ifSubset="overlayEffect:overlayEffect1">
+      <size>1 1</size>
+      <pos>0.5 0.5</pos>
+      <origin>0.5 0.5</origin>
+      <tile>true</tile>
+      <path>./_inc/scanlines.png</path>
+      <zIndex>5000</zIndex>
+    </image>
+    
+    <image name="image_overlayEffect" extra="true" ifSubset="overlayEffect:overlayEffect2">
+      <size>1 1</size>
+      <pos>0.5 0.5</pos>
+      <origin>0.5 0.5</origin>
+      <tile>true</tile>
+      <path>./_inc/pixelate.png</path>
+      <zIndex>5000</zIndex>
+    </image>
+    
+ </view>
+    
+ <view name="system">  
+  
+ <helpsystem name="help">
+   <fontPath>./_inc/SnesItalic.ttf</fontPath>
+   <fontSize>0.04</fontSize>
+   <pos>0.5 0.95</pos>
+   <origin>0.5 0.5</origin>
+   <textColor>ffff00</textColor>
+   <iconColor>ffff00</iconColor>
+  </helpsystem> 
+         
+  <image name="system_tv" extra="true" ifSubset="FSeffect:FSeffect3">						
+   <size>1 1</size>   
+   <origin>0.5 0.5</origin>
+   <pos>0.5 0.5</pos>					
+   <zIndex>0</zIndex>			
+   <path>./_inc/tv.gif</path>										                         			         
+  </image>
+  
+  <video name="system_video" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect2">
+      <path>{random}</path>
+      <origin>0.5 0.5</origin> 
+      <pos>0.5 0.5</pos>           
+      <size ifSubset="videoAspect:videoAspect1|videoAspect2">1 1</size>     
+      <maxSize ifSubset="videoAspect:videoAspect0">1 1</maxSize>     
+      <delay>0</delay>      
+      <effect>none</effect>
+      <zIndex>5</zIndex>    
+      <default ifSubset="FSeffect:FSeffect1">./_inc/tv.mp4</default>         
+  </video>
+        
+  <!--System label-->    		
+  <text name="logo_label" extra="true">
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>
+   <fontSize>0.03</fontSize>
+   <forceUppercase>true</forceUppercase>
+   <text>>SYSTEM</text>
+   <origin>0.5 0.5</origin>	   
+   <pos>0.435 0.215</pos>
+   <alignment>left</alignment>
+   <zIndex>20</zIndex>   
+  </text>	   
+  
+  <text name="systemInfo">   
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <fontSize>0.03</fontSize>
+   <backgroundColor>00000000</backgroundColor>  
+   <color>ffffff</color>
+   <glowColor>00000000</glowColor>
+   <glowSize>1</glowSize>
+   <pos>0.35 0.78</pos>
+   <origin>0.5 0.5</origin>
+   <alignment>right</alignment>
+  </text> 
+		
+  <carousel name="systemcarousel">
+   <type>vertical</type>
+   <defaultTransition>instant</defaultTransition>
+   <pos>0.5 0.49</pos>
+   <origin>0.5 0.5</origin>
+   <logoAlignment>center</logoAlignment>     
+   <scrollSound>./_inc/Move.wav</scrollSound>   
+   <size>0.68 0.5</size>         
+   <logoScale>2</logoScale>      
+   <logoSize>1 1</logoSize>
+   <color>00000000</color>      
+   <maxLogoCount>9</maxLogoCount>
+   <zIndex>20</zIndex>	
+   <systemInfoDelay>0</systemInfoDelay>	        
+  </carousel>    
+			
+  <text name="logoText" >
+   <backgroundColor>00000000</backgroundColor>
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffff</color>      
+   <size>1 1</size>
+   <fontSize>0.06</fontSize>  
+   <forceUppercase>1</forceUppercase> 	   
+  </text>
+         
+  <!--picknmix box-->		      
+  <image name="system_picknmix" extra="true">   
+   <path>./_inc/picknmix.jpg</path>
+   <size>0.8 0.7</size>
+   <origin>0.5 0.5</origin>		
+   <pos>0.5 0.5</pos>				
+   <zIndex>10</zIndex>   
+   <opacity>1</opacity>	   
+  </image> 
+  
+  <!--Animations-->            
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS2">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="2000"/>
+   </storyboard>	  
+  </control> 
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS3">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="3000"/>           
+   </storyboard>	  
+  </control> 
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS4">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="4000"/>
+   </storyboard>	  
+  </control> 
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS5">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="5000"/>
+   </storyboard>	  
+  </control> 
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS6">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="6000"/>
+   </storyboard>	  
+  </control>
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS7">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="7000"/>
+   </storyboard>	  
+  </control>  
+  <control name="system_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS8">
+   <storyboard>    			                         			
+    <animation property="zIndex" from="5" to="1000" duration="0" mode="easyOut" begin="8000"/>
+   </storyboard>	  
+  </control>    
+  
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS2">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="1000"/>
+   </storyboard>	  
+  </control>
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS3">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="2000"/>
+   </storyboard>	  
+  </control>
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS4">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="3000"/>
+   </storyboard>	  
+  </control>
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS5">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="4000"/>
+   </storyboard>	  
+  </control>
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS6">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="5000"/>
+   </storyboard>	  
+  </control>  
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS7">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="6000"/>
+   </storyboard>	  
+  </control>  
+  <control name="system_picknmix" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS8">
+   <storyboard>    			                         			
+    <animation property="opacity" from="1" to="0" duration="1000" mode="linear" begin="7000"/>
+   </storyboard>	  
+  </control>  
+     
+ </view> 
+ 		
+
+ <!--Detailed theme-->
+ <view name="detailed,basic">
+  
+  <helpsystem name="help">
+   <fontPath>./_inc/SnesItalic.ttf</fontPath>
+   <fontSize>0.03</fontSize>
+   <pos>0.5 0.95</pos>
+   <origin>0.5 0.5</origin>
+   <textColor>ffff00</textColor>
+   <iconColor>ffff00</iconColor>
+  </helpsystem> 
+   
+  <!--hide background on box animation-->  
+  <image name="detailed_background_box" extra="true">  
+   <path>./_inc/black.png</path>
+   <size>1 1</size>
+   <pos>2 2</pos>
+   <origin>0.5 0.5</origin>	
+   <zIndex>150</zIndex>   
+   <opacity>0</opacity>   	
+  </image>
+ 
+ <!--hide background on video animation-->  
+  <image name="detailed_background_video" extra="true">
+   <path>./_inc/black.png</path>
+   <size>1 1</size>
+   <pos>2 2</pos>
+   <origin>0.5 0.5</origin>	
+   <zIndex>300</zIndex>
+   <opacity>0</opacity>   	
+  </image>
+  
+  <!--System label-->    		
+  <text name="detailed_logo_label" extra="true">
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>
+   <fontSize>0.03</fontSize>
+   <forceUppercase>true</forceUppercase>
+   <text>></text>
+   <origin>0.5 0.5</origin>
+   <pos>0.435 0.215</pos>	      
+   <alignment>left</alignment>
+   <zIndex>5</zIndex>   
+  </text>		
+  <text name="logoText" >
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>	    
+   <fontSize>0.03</fontSize>
+   <origin>0.5 0.5</origin>	   
+   <pos>0.45 0.215</pos>
+   <alignment>left</alignment>
+   <forceUppercase>true</forceUppercase>
+   <zIndex>5</zIndex>   
+  </text>
+  
+  <!--Releaste date-->         
+  <datetime name="md_releasedate">			
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>	    
+   <fontSize>0.03</fontSize>
+   <origin>0.5 0.5</origin>	
+   <pos>0.435 0.785</pos>     
+   <alignment>left</alignment>
+   <forceUppercase>true</forceUppercase>
+   <zIndex>5</zIndex>   
+  </datetime>
+  
+  <!--Developer-->       
+  <text name="md_publisher">
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.55 0.1</size>	    
+   <fontSize>0.03</fontSize>
+   <origin>0.5 0.5</origin>	   
+   <pos>0.58 0.785</pos>
+   <alignment>right</alignment>
+   <forceUppercase>true</forceUppercase>
+   <zIndex>5</zIndex>   
+  </text>
+      
+  <!--List games-->		
+  <textlist name="gamelist">      
+   <selectorImagePath>./_inc/selector_bar_black.png</selectorImagePath>
+   <selectorHeight>0.069</selectorHeight>	
+   <selectorOffsetY>-0.006</selectorOffsetY>         
+   <selectorColor>ffffffff</selectorColor>  
+   <selectedColor>ffffffff</selectedColor>   
+   <primaryColor>D3D3D3</primaryColor>                
+   <secondaryColor>ffffffff</secondaryColor>
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <fontSize>0.03</fontSize>
+   <forceUppercase>0</forceUppercase>
+   <scrollSound>./_inc/Move.wav</scrollSound>
+   <pos>0.5 0.5</pos>
+   <size>0.74 0.49</size>
+   <origin>0.5 0.5</origin>	
+   <alignment>center</alignment>     
+   <zIndex>5</zIndex>   
+   <lines>9</lines>             	        	 	                        	                                                                      
+  </textlist>
+      
+  <!--picknmix box-->		      
+  <image name="detailed_picknmix" extra="true">
+   <path>./_inc/picknmix_detailed.jpg</path>
+   <size>0.8 0.7</size>
+   <origin>0.5 0.5</origin>		
+   <pos>0.5 0.5</pos>				
+   <zIndex>4</zIndex>      	
+  </image>           
+
+  <!--Hide elements-->
+  <text name="md_image,md_marquee,md_developer, md_lbl_rating,md_lbl_releasedate, md_lbl_developer, md_lbl_publisher, md_lbl_genre, md_lbl_lastplayed, md_lbl_playcount, md_lbl_players, md_genre, md_playcount, md_lastplayed, md_description">			
+   <pos>2 2</pos>
+  </text>           
+  
+  <rating name="md_rating">			
+   <pos>2 2</pos>
+  </rating>
+       
+  <!--Tunner effect-->         
+  <image name="detailed_tv" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect:FSeffect3">						
+   <size>1 1</size>   
+   <origin>0.5 0.5</origin>
+   <pos>0.5 0.5</pos>					
+   <zIndex>0</zIndex>			
+   <path>./_inc/tv.gif</path>										                         			         
+  </image>		
+  
+  <!--Thumbnail box-->             
+  <image name="md_thumbnail">	
+   <size ifSubset="boxAspect:boxAspect1">1 1</size>     
+   <maxSize ifSubset="boxAspect:boxAspect0">1 1</maxSize>    		   
+   <origin>0.5 0.5</origin>		
+   <pos>2 2</pos>   
+   <opacity>0</opacity>	
+   <zIndex>200</zIndex>   	
+  </image>
+  
+  <!--Video-->                      
+  <video name="md_video" ifSubset="delayFS:delayFS6|delayFS:delayFS7|delayFS:delayFS8|delayFS:delayFS2|delayFS:delayFS3|delayFS:delayFS4|delayFS:delayFS5">
+   <showSnapshotNoVideo>true</showSnapshotNoVideo>
+   <showSnapshotDelay>true</showSnapshotDelay>
+   <snapshotSource>image</snapshotSource>			
+   <size ifSubset="videoAspect:videoAspect1">1 1</size>     
+   <maxSize ifSubset="videoAspect:videoAspect0">1 1</maxSize>     
+   <delay>${theme.delayFS}</delay>  
+   <origin>0.5 0.5</origin>
+   <pos>2 2</pos>  		
+   <zIndex>3000</zIndex>				
+   <opacity>1</opacity>    
+  </video>		
+    
+    
+  <!--Animations-->     
+  <control name="md_thumbnail, detailed_background_box, detailed_background_video, md_video">
+   <storyboard event="deactivate">                
+    <animation property="opacity" to="0" duration="350" mode="easeOut"/>   
+    <animation property="pos" to="2 2" duration="350" mode="bump"/>   
+   </storyboard>
+  </control>
+  <control name="md_thumbnail, detailed_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox1">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="1000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="1000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="1000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="1000"/>
+   </storyboard>   
+  </control>   
+  <control name="md_thumbnail,detailed_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox2">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>     
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>	     
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>   
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>    
+  </control>      
+  <control name="md_thumbnail, detailed_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox3">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>	
+  </control>    
+  <control name="md_thumbnail, detailed_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox4">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>
+  </control>    
+  <control name="md_thumbnail, detailed_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox5">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>
+  </control>
+
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS2">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>    
+  </control>	
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS3">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>    
+  </control>	
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS4">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>    
+  </control>	
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS5">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>    
+  </control>	   
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS6">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="6000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="6000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="6000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="6000"/>
+  </storyboard>    
+  </control>	   
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS7">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="7000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="7000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="7000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="7000"/>
+   </storyboard>    
+  </control>	   
+  <control name="md_video, detailed_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS8">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="8000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="8000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="8000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="8000"/>    
+   </storyboard>    
+  </control>
+   
+ </view>
+
+<view name="gamecarousel">
+  
+  <helpsystem name="help">
+   <fontPath>./_inc/SnesItalic.ttf</fontPath>
+   <fontSize>0.03</fontSize>
+   <pos>0.5 0.95</pos>
+   <origin>0.5 0.5</origin>
+   <textColor>ffff00</textColor>
+   <iconColor>ffff00</iconColor>
+  </helpsystem> 
+  
+  <!--hide background on box animation-->  
+  <image name="gamecarousel_background_box" extra="true">  
+   <path>./_inc/black.png</path>
+   <size>1 1</size>
+   <pos>2 2</pos>
+   <origin>0.5 0.5</origin>	
+   <zIndex>150</zIndex>   
+   <opacity>0</opacity>   	
+  </image>
+ 
+ <!--hide background on video animation-->  
+  <image name="gamecarousel_background_video" extra="true">
+   <path>./_inc/black.png</path>
+   <size>1 1</size>
+   <pos>2 2</pos>
+   <origin>0.5 0.5</origin>	
+   <zIndex>300</zIndex>
+   <opacity>0</opacity>   	
+  </image>
+  
+  <!--System label-->    		
+  <text name="detailed_logo_label" extra="true">
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>
+   <fontSize>0.03</fontSize>
+   <forceUppercase>true</forceUppercase>
+   <text>></text>
+   <origin>0.5 0.5</origin>
+   <pos>0.435 0.215</pos>	      
+   <alignment>left</alignment>
+   <zIndex>5</zIndex>   
+  </text>		
+  <text name="logoText" >
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>	    
+   <fontSize>0.03</fontSize>
+   <origin>0.5 0.5</origin>	   
+   <pos>0.45 0.215</pos>
+   <alignment>left</alignment>
+   <forceUppercase>true</forceUppercase>
+   <zIndex>5</zIndex>   
+  </text>
+  
+  <!--Releaste date-->         
+  <datetime name="md_releasedate">			
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.6 0.2</size>	    
+   <fontSize>0.03</fontSize>
+   <origin>0.5 0.5</origin>	
+   <pos>0.435 0.785</pos>     
+   <alignment>left</alignment>
+   <forceUppercase>true</forceUppercase>
+   <zIndex>5</zIndex>   
+  </datetime>
+  
+  <!--Developer-->       
+  <text name="md_publisher">
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffffff</color>
+   <size>0.55 0.1</size>	    
+   <fontSize>0.03</fontSize>
+   <origin>0.5 0.5</origin>	   
+   <pos>0.58 0.785</pos>
+   <alignment>right</alignment>
+   <forceUppercase>true</forceUppercase>
+   <zIndex>5</zIndex>   
+  </text>
+       
+ <gamecarousel name="gamecarousel">
+   <type>vertical</type>
+   <defaultTransition>instant</defaultTransition>
+   <pos>0.5 0.49</pos>   
+   <origin>0.5 0.5</origin>
+   <logoAlignment>center</logoAlignment>     
+   <scrollSound>./_inc/Move.wav</scrollSound>   
+   <size>0.8 0.5</size>         
+   <logoScale>1</logoScale>      
+   <logoSize>0.9 0.1</logoSize>            
+   <imageSource>text</imageSource>	 
+   <maxLogoCount>9</maxLogoCount>
+   <zIndex>5</zIndex>         
+  </gamecarousel>    
+  
+  <image name="gamecarousel_zoomblack" extra="true">
+   <path>./_inc/black.png</path>   
+   <origin>0.5 0.5</origin>		
+   <pos>0.5 0.49</pos>
+   <size>0.75 0.05</size>
+   <zIndex>40</zIndex>
+  </image>     
+     			
+  <text name="gamecarouselLogoText">     
+   <backgroundColor>00000000</backgroundColor>
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffff</color>      
+   <size>0 0.1</size>
+   <fontSize>0.03</fontSize>  
+   <forceUppercase>0</forceUppercase>                
+  </text>
+                  
+  <text name="md_name" extra="true">			  
+   <origin>0.5 0.5</origin>		
+   <pos>0.5 0.49</pos>
+   <fontPath>./_inc/consola-bold.ttf</fontPath>
+   <color>ffffff</color>      
+   <size>0.75 1</size>
+   <fontSize>0.06</fontSize>     	
+   <zIndex>50</zIndex>   
+   <singleLineScroll>true</singleLineScroll>
+   <autoScroll>horizontal</autoScroll>	   
+   <opacity>0</opacity>   
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="380" mode="linear" begin="0"/>             
+   </storyboard>    	   
+   <storyboard event="deactivate">    			                         			
+    <animation property="opacity" from="1" to="0" duration="0" mode="easyOut" begin="0"/>
+   </storyboard>       	  
+  </text>    
+  
+  <!--picknmix box-->		      
+  <image name="gamecarousel_picknmix" extra="true">   
+   <path>./_inc/picknmix.jpg</path>
+   <size>0.8 0.7</size>
+   <origin>0.5 0.5</origin>		
+   <pos>0.5 0.5</pos>				
+   <zIndex>4</zIndex>       
+  </image> 
+  
+  <!--Hide elements-->
+  <text name="md_image,md_marquee,md_developer, md_lbl_rating,md_lbl_releasedate, md_lbl_developer, md_lbl_publisher, md_lbl_genre, md_lbl_lastplayed, md_lbl_playcount, md_lbl_players, md_genre, md_playcount, md_lastplayed, md_description">			
+   <pos>2 2</pos>
+  </text>           
+  
+  <rating name="md_rating">			
+   <pos>2 2</pos>
+  </rating>
+       
+  <!--Tunner effect-->         
+  <image name="gamecarousel_tv" extra="true" ifSubset="FSeffect:FSeffect1|FSeffect:FSeffect3">						
+   <size>1 1</size>   
+   <origin>0.5 0.5</origin>
+   <pos>0.5 0.5</pos>					
+   <zIndex>0</zIndex>			
+   <path>./_inc/tv.gif</path>										                         			         
+  </image>		
+  
+  <!--Thumbnail box-->             
+  <image name="md_thumbnail">	
+   <size ifSubset="boxAspect:boxAspect1">1 1</size>     
+   <maxSize ifSubset="boxAspect:boxAspect0">1 1</maxSize>    		   
+   <origin>0.5 0.5</origin>		
+   <pos>2 2</pos>   
+   <opacity>0</opacity>	
+   <zIndex>200</zIndex>   	
+  </image>
+  
+  <!--Video-->                      
+  <video name="md_video" ifSubset="delayFS:delayFS6|delayFS:delayFS7|delayFS:delayFS8|delayFS:delayFS2|delayFS:delayFS3|delayFS:delayFS4|delayFS:delayFS5">
+   <showSnapshotNoVideo>true</showSnapshotNoVideo>
+   <showSnapshotDelay>true</showSnapshotDelay>
+   <snapshotSource>image</snapshotSource>			
+   <size ifSubset="videoAspect:videoAspect1">1 1</size>     
+   <maxSize ifSubset="videoAspect:videoAspect0">1 1</maxSize>     
+   <delay>${theme.delayFS}</delay>  
+   <origin>0.5 0.5</origin>
+   <pos>2 2</pos>  		
+   <zIndex>3000</zIndex>				
+   <opacity>1</opacity>    
+  </video>		
+    
+ 
+
+  
+  <!--Animations-->     
+  <!--
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS2"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="1000"/>             
+   </storyboard>  
+  </control>
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS3"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="2000"/>             
+   </storyboard>  
+  </control>
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS4"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="3000"/>             
+   </storyboard>  
+  </control>
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS5"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="4000"/>             
+   </storyboard>  
+  </control>
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS6"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="5000"/>             
+   </storyboard>  
+  </control>
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS7"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="6000"/>             
+   </storyboard>  
+  </control>
+  <control name="gamecarouselLogoText" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS8"> 
+   <storyboard event="scroll">    			                         			
+    <animation property="opacity" to="0" duration="1000" mode="linear" begin="7000"/>             
+   </storyboard>  
+  </control>-->
+  
+  <!--Animations-->     
+  <control name="md_thumbnail, gamecarousel_background_box, gamecarousel_background_video, md_video">
+   <storyboard event="deactivate">                
+    <animation property="opacity" to="0" duration="350" mode="easeOut"/>   
+    <animation property="pos" to="2 2" duration="350" mode="bump"/>   
+   </storyboard>
+  </control>
+  <control name="md_thumbnail, gamecarousel_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox1">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="1000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="1000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="1000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="1000"/>
+   </storyboard>   
+  </control>   
+  <control name="md_thumbnail,gamecarousel_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox2">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>     
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>	     
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>   
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>    
+  </control>      
+  <control name="md_thumbnail, gamecarousel_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox3">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>	
+  </control>    
+  <control name="md_thumbnail, gamecarousel_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox4">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>
+  </control>    
+  <control name="md_thumbnail, gamecarousel_background_box" ifSubset="FSeffect:FSeffect1,delayBox:delayBox5">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>
+  </control>
+
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS2">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="2000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="2000"/>
+   </storyboard>    
+  </control>	
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS3">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="3000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="3000"/>
+   </storyboard>    
+  </control>	
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS4">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="4000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="4000"/>
+   </storyboard>    
+  </control>	
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS5">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="5000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="5000"/>
+   </storyboard>    
+  </control>	   
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS6">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="6000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="6000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="6000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="6000"/>
+  </storyboard>    
+  </control>	   
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS7">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="7000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="7000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="7000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="7000"/>
+   </storyboard>    
+  </control>	   
+  <control name="md_video, gamecarousel_background_video" ifSubset="FSeffect:FSeffect1|FSeffect2,delayFS:delayFS8">
+   <storyboard event="open">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="8000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="8000"/>
+   </storyboard>	
+   <storyboard event="activate">    			                         			
+    <animation property="opacity" from="0" to="1" duration="1000" mode="linear" begin="8000"/>
+    <animation property="pos" to="0.5 0.5" duration="0" mode="bump" begin="8000"/>    
+   </storyboard>    
+  </control>
+  
+ </view>    
+ 
+
+</theme>
