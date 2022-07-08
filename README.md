@@ -8,6 +8,7 @@ Theme: picknmix
 Author: psakhis
 
 Original idea from AM picknmix layout by keilmillerjr (https://github.com/keilmillerjr/picknmix-layout)
+
 Design is based on the unibios PICKnMIX option for the 161-in-1 multicart on neo geo.
 
 ### Features
@@ -19,7 +20,7 @@ Design is based on the unibios PICKnMIX option for the 161-in-1 multicart on neo
 
 ### Configurable theme settings
 
-* Rom list style: Detailed - base - grid - game carousel
+* Rom list style: Detailed - game carousel
 * List transition: instant 
 * Fullscreen media: videos, thumbnails, tv
 * Delay for videos and thumbnails in seconds
