@@ -166,6 +166,7 @@
    <logoScale>2</logoScale>      
    <logoSize>1 1</logoSize>
    <color>00000000</color>      
+   <minLogoOpacity>0.8</minLogoOpacity>
    <maxLogoCount>9</maxLogoCount>
    <zIndex>20</zIndex>	
    <systemInfoDelay>0</systemInfoDelay>	        
@@ -647,6 +648,7 @@
    <logoSize>0.9 0.1</logoSize>            
    <imageSource>text</imageSource>	 
    <maxLogoCount>9</maxLogoCount>
+   <minLogoOpacity>0.8</minLogoOpacity>
    <zIndex>5</zIndex>         
   </gamecarousel>    
   
